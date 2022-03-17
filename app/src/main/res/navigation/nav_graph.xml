@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstFragment">
+
+    <!-- FIRST -->
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="ru.rut.demonavigation.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+
+    <!-- SECOND -->
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="ru.rut.demonavigation.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" >
+        <action
+            android:id="@+id/action_secondFragment_to_thirdFragment"
+            app:destination="@id/subGraph_three_four_five_six" />
+        <action
+            android:id="@+id/action_secondFragment_to_seventhFragment"
+            app:destination="@id/subGraph_seven_eight_nine_ten" />
+    </fragment>
+
+
+    <!-- -->
+    <!-- NESTED (3-6)-->
+    <!-- -->
+
+
+    <navigation android:id="@+id/subGraph_three_four_five_six"
+        app:startDestination="@id/thirdFragment">
+
+        <!-- THIRD -->
+        <fragment
+            android:id="@+id/thirdFragment"
+            android:name="ru.rut.demonavigation.ThirdFragment"
+            android:label="fragment_third"
+            tools:layout="@layout/fragment_third">
+            <action
+                android:id="@+id/action_thirdFragment_to_fourthFragment"
+                app:destination="@id/fourthFragment" />
+        </fragment>
+
+        <!-- FOURTh -->
+        <fragment
+            android:id="@+id/fourthFragment"
+            android:name="ru.rut.demonavigation.FourthFragment"
+            android:label="fragment_fourth"
+            tools:layout="@layout/fragment_fourth">
+            <action
+                android:id="@+id/action_fourthFragment_to_sixthFragment"
+                app:destination="@id/subGraph_six" />
+            <action
+                android:id="@+id/action_fourthFragment_to_fifthFragment"
+                app:destination="@id/subGraph_five" />
+        </fragment>
+
+        <!-- FIFTH -->
+        <navigation android:id="@+id/subGraph_five"
+            app:startDestination="@id/fifthFragment">
+            <fragment
+                android:id="@+id/fifthFragment"
+                android:name="ru.rut.demonavigation.FifthFragment"
+                android:label="fragment_fifth"
+                tools:layout="@layout/fragment_fifth">
+                <action
+                    android:id="@+id/action_fifthFragment_to_firstFragment"
+                    app:destination="@id/firstFragment" />
+            </fragment>
+        </navigation>
+
+        <!-- SIXTH -->
+        <navigation android:id="@+id/subGraph_six"
+            app:startDestination="@id/sixthFragment">
+            <fragment
+                android:id="@+id/sixthFragment"
+                android:name="ru.rut.demonavigation.SixthFragment"
+                android:label="fragment_sixth"
+                tools:layout="@layout/fragment_sixth">
+                <action
+                    android:id="@+id/action_sixthFragment_to_firstFragment"
+                    app:destination="@id/firstFragment" />
+            </fragment>
+        </navigation>
+
+
+    </navigation>
+
+    <!-- -->
+    <!-- NESTED (7-10)-->
+    <!-- -->
+
+    <!-- SEVENTH -->
+    <navigation android:id="@+id/subGraph_seven_eight_nine_ten"
+        app:startDestination="@id/seventhFragment">
+        <fragment
+            android:id="@+id/seventhFragment"
+            android:name="ru.rut.demonavigation.SeventhFragment"
+            android:label="fragment_seventh"
+            tools:layout="@layout/fragment_seventh">
+            <action
+                android:id="@+id/action_seventhFragment_to_eighthFragment"
+                app:destination="@id/subGraph_eight" />
+            <action
+                android:id="@+id/action_seventhFragment_to_ninthFragment"
+                app:destination="@id/subGraph_nine_ten" />
+        </fragment>
+
+        <!-- -->
+        <!-- NESTED (8)-->
+        <!-- -->
+
+        <navigation android:id="@+id/subGraph_eight"
+            app:startDestination="@id/eighthFragment">
+            <!-- EIGHTH -->
+            <fragment
+                android:id="@+id/eighthFragment"
+                android:name="ru.rut.demonavigation.EighthFragment"
+                android:label="fragment_eighth"
+                tools:layout="@layout/fragment_eighth">
+                <action
+                    android:id="@+id/action_eighthFragment_to_firstFragment"
+                    app:destination="@id/firstFragment" />
+            </fragment>
+        </navigation>
+
+        <!-- -->
+        <!-- NESTED (9-10)-->
+        <!-- -->
+        <navigation android:id="@+id/subGraph_nine_ten"
+            app:startDestination="@id/ninthFragment">
+            <!-- NINTH -->
+            <fragment
+                android:id="@+id/ninthFragment"
+                android:name="ru.rut.demonavigation.NinthFragment"
+                android:label="fragment_ninth"
+                tools:layout="@layout/fragment_ninth">
+                <action
+                    android:id="@+id/action_ninthFragment_to_tenthFragment"
+                    app:destination="@id/tenthFragment" />
+            </fragment>
+            <!-- TENTH -->
+            <fragment
+                android:id="@+id/tenthFragment"
+                android:name="ru.rut.demonavigation.TenthFragment"
+                android:label="fragment_tenth"
+                tools:layout="@layout/fragment_tenth">
+                <action
+                    android:id="@+id/action_tenthFragment_to_firstFragment"
+                    app:destination="@id/firstFragment" />
+            </fragment>
+        </navigation>
+    </navigation>
+</navigation>
